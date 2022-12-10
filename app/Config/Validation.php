@@ -41,4 +41,45 @@ class Validation extends BaseConfig
     // --------------------------------------------------------------------
     // Rules
     // --------------------------------------------------------------------
+    public $user = [
+        'name' => [
+            'rules' => 'required|min_length[5]|is_unique[user.name]',
+        ],
+        'email' => [
+            'rules' => 'required|valid_email',
+        ],
+        'password' => [
+            'rules'  => 'required',
+        ],
+        'repeatPassword' => [
+            'rules' => 'required|matches[password]'
+        ],
+    ];
+
+    public $userupdate = [
+        'name' => [
+            'rules' => 'required|min_length[5]|is_unique[user.name],id,{id}',
+        ],
+        'email' => [
+            'rules' => 'required|valid_email',
+        ],
+    ];
+
+    public $moviment = [
+        'description' => [
+            'rules' => 'required|min_length[5]'
+        ],
+        'value' => [
+            'rules' => 'required',
+        ],
+    ];
+
+    public $login = [
+        'email' => [
+            'rules' => 'required|valid_email',
+        ],
+        'password' => [
+            'rules'  => 'required',
+        ],
+    ];
 }

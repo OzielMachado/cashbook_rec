@@ -17,8 +17,8 @@ if (is_file(SYSTEMPATH . 'Config/Routes.php')) {
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('Home');
-$routes->setDefaultMethod('index');
+$routes->setDefaultController('Auth');
+$routes->setDefaultMethod('login');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
 // The Auto Routing (Legacy) is very dangerous. It is easy to create vulnerable apps
@@ -35,7 +35,33 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
+
+// routes users
+$routes->get('user/index', 'User::index');
+$routes->get('user/create', 'User::create');
+$routes->post('user/create', 'User::create');
+$routes->get('user/update/(:num)', 'User::update');
+$routes->post('user/update/(:num)', 'User::update');
+$routes->get('user/delete/(:num)', 'User::delete');
+
+// routes moviments
+$routes->get('moviment/index', 'Moviment::index');
+$routes->get('moviment/create', 'Moviment::create');
+$routes->post('moviment/create', 'Moviment::create');
+$routes->get('moviment/update/(:num)', 'Moviment::update');
+$routes->post('moviment/update/(:num)', 'Moviment::update');
+$routes->get('moviment/delete/(:num)', 'Moviment::delete');
+
+// routes auth
+$routes->get('auth/login', 'Auth::login');
+$routes->post('auth/login', 'Auth::login');
+$routes->get('auth/logout', 'Auth::logout');
+$routes->get('auth/register', 'Auth::register');
+$routes->post('auth/register', 'Auth::register');
+
+// routes dashboard
+$routes->get('dashboard/index', 'Dashboard::index');
+
 
 /*
  * --------------------------------------------------------------------
